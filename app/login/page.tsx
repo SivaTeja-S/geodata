@@ -1,37 +1,37 @@
 // pages/login.tsx
 "use client";
-import { useState } from 'react';
-import Link from 'next/link';
-// import Layout from '../components/Layout';
+import { useState } from "react";
+import Link from "next/link";
+// import Layout from "../components/Layout";
 
 const Login = () => {
-  const [username, setusername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setusername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const res = await fetch('https://backend-geodata.vercel.app/api/users/login', {
-        method: 'POST',
+      const res = await fetch("https://backend-geodata.vercel.app/api/users/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
 
       if (!res.ok) {
         const { msg } = await res.json();
-        throw new Error(msg || 'Login failed');
+        throw new Error(msg || "Login failed");
       }
 
       // Redirect or handle success as needed
-      console.log('Login successful');
+      console.log("Login successful");
 
       // Example: Redirect to home page
-      window.location.href = '/';
+      window.location.href = "/";
     } catch (error) {
     //   setError(error.message);
     console.log(error)
@@ -74,7 +74,7 @@ const Login = () => {
           </button>
         </form>
         <p className="text-center text-blue-600 mt-4">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{" "}
           <Link href="/register">
             Register here
           </Link>
