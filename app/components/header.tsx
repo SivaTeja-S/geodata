@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useAuth } from '../contexts/auth';
 
 function Header() {
-    const { user, logout } = useAuth();
+    // const { user, logout } = useAuth();
 
   return (
     <header className="bg-gray-800 p-4 fixed w-full top-0 z-50">
@@ -11,8 +11,8 @@ function Header() {
         <Link href="/">
         Home
         </Link>
-        {user ? (
-          <div className="flex items-center space-x-4">
+        {/* {user ? ( */}
+          {/* <div className="flex items-center space-x-4">
             <span className="text-white">Welcome, {user.username}!</span>
             <button
               onClick={logout}
@@ -21,11 +21,11 @@ function Header() {
               Logout
             </button>
           </div>
-        ) : (
+        ) : ( */}
           <Link href="/login">
             Login
           </Link>
-        )}
+        {/* )} */}
       </nav>
     </header>
   );

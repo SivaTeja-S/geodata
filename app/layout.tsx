@@ -22,10 +22,10 @@ export default function RootLayout({
         {/* Any additional head elements */}
       </head>
       <body className={inter.className}>
-        <AuthProvider>
+        {/* <AuthProvider> */}
           <Header />
           {children}
-        </AuthProvider>
+        {/* </AuthProvider> */}
       </body>
     </html>
   );

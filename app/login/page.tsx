@@ -7,7 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,9 +27,9 @@ const Login = () => {
         throw new Error(msg || "Login failed");
       }
 
-      login(username);
+      // login(username);
     } catch (error) {
-      setError(error.message);
+      // setError(error.message);
     }
   };
 

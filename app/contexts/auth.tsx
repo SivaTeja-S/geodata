@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 const AuthContext = createContext(null);
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
@@ -15,11 +15,11 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (username) => {
-    setUser({ username });
-    localStorage.setItem('user', JSON.stringify({ username }));
-    router.push('/');
-  };
+//   const login = (username) => {
+//     setUser({ username });
+//     localStorage.setItem('user', JSON.stringify({ username }));
+//     router.push('/');
+//   };
 
   const logout = () => {
     setUser(null);
@@ -28,9 +28,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    // <AuthContext.Provider>
+      {/* {children} */}
+    // </AuthContext.Provider>
   );
 };
 
