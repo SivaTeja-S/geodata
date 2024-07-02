@@ -2,38 +2,18 @@
 "use client";
 import React, { useState } from 'react';
 import Header from "../components/header";
-import Map from "../components/map";
+import Map from "../components/map2";
 // import FileUpload from "../components/fileupload";
 
 export default function Users() {
-  const [geoJsonData, setGeoJsonData] = useState(null);
-
-  const handleFileUpload = (content:any, fileType:'application/json') => {
-    console.log("File type:", fileType);
-    console.log("File content:", content);
-
-    if (fileType === 'application/json' || fileType === 'application/geojson') {
-      try {
-        const parsedData = JSON.parse(content);
-        console.log("Parsed GeoJSON Data:", parsedData);
-        setGeoJsonData(parsedData);
-      } catch (error) {
-        console.error('Error parsing JSON:', error);
-      }
-    } else if (fileType === 'image/tiff') {
-      console.error('TIFF file handling not implemented yet');
-      // Handle TIFF file parsing or processing here if needed
-    }
-  };
-  
-
   return (
-    <main className="usermaps">
+    <main className="">
       <Header />
       
         {/* <FileUpload onFileUpload={handleFileUpload} /> */}
-      <div className=" m-auto  overflow-hidden mapcontainermain">
-      <Map geoJsonData={geoJsonData} />
+      <div className=" m-auto  overflow-hidden drawingshapes">
+      <div><h2 className="header1 mb-10">Drawing shapes on maps</h2></div>
+      <Map />
   </div>
      
     </main>

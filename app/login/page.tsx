@@ -1,18 +1,17 @@
-// pages/login.tsx
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-// import Layout from "../components/Layout";
+import { useAuth } from '../contexts/auth';
 
 const Login = () => {
-  const [username, setusername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-
     try {
       const res = await fetch("https://backend-geodata.vercel.app/api/users/login", {
         method: "POST",
@@ -20,6 +19,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
+        mode: 'no-cors' 
       });
 
       if (!res.ok) {
@@ -27,44 +27,36 @@ const Login = () => {
         throw new Error(msg || "Login failed");
       }
 
-      // Redirect or handle success as needed
-      console.log("Login successful");
-
-      // Example: Redirect to home page
-      window.location.href = "/";
+      login(username);
     } catch (error) {
-    //   setError(error.message);
-    console.log(error)
+      setError(error.message);
     }
   };
 
   return (
-      <div className="max-w-md mx-auto bg-white p-8 mt-12 shadow-lg rounded-lg">
-        <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-lg">
+        <h2 className="text-2xl font-bold text-center text-black mb-4">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block font-medium">
-              Email
-            </label>
+            <label htmlFor="email" className="block font-medium text-black">Email</label>
             <input
               type="email"
               id="email"
               value={username}
-              onChange={(e) => setusername(e.target.value)}
-              className="block w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              onChange={(e) => setUsername(e.target.value)}
+              className="block w-full px-4 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
               required
             />
           </div>
           <div>
-            <label htmlFor="password" className="block font-medium">
-              Password
-            </label>
+            <label htmlFor="password" className="block font-medium text-black">Password</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              className="block w-full px-4 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
               required
             />
           </div>
@@ -80,11 +72,8 @@ const Login = () => {
           </Link>
         </p>
       </div>
+    </div>
   );
 };
 
 export default Login;
-
-
-
-

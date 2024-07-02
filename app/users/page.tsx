@@ -2,7 +2,7 @@
 "use client";
 import React, { useState } from 'react';
 import Header from "../components/header";
-import Map from "../components/map";
+import Map from "../components/map1";
 import FileUpload from "../components/fileupload";
 
 export default function Users() {
@@ -30,11 +30,10 @@ export default function Users() {
   return (
     <main className="usermaps">
       <Header />
-      
-        <FileUpload onFileUpload={handleFileUpload} />
-      <div className=" m-auto  overflow-hidden mapcontainermain">
+      <div className="overflow-hidden mapcontainermain">
       <Map geoJsonData={geoJsonData} />
   </div>
+  <FileUpload onFileUpload={handleFileUpload} />
      
     </main>
   );

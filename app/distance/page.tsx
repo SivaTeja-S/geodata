@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Header from '../components/header';
 // Load the map component dynamically to ensure it works with Next.js SSR
-const Map = dynamic(() => import('../components/map'), { ssr: false });
-
+const Map1 = dynamic(() => import('../components/map3'), { ssr: false });
+const Map2 = dynamic(() => import('../components/map4'), { ssr: false });
 export default function MeasureDistance() {
   const [geoJsonData, setGeoJsonData] = useState(null);
 
@@ -15,9 +15,14 @@ export default function MeasureDistance() {
         <Header></Header>
     <div className="distancemain">
         
-        <h1 className="text-3xl font-bold mb-4">Measure Distance and Manage Markers</h1>
-        <div className=" m-auto overflow-hidden mb-4">
-          <Map geoJsonData={geoJsonData} />
+        <h1 className="header1 mb-4">Measuring Distance on Maps</h1>
+        <div className="m-auto overflow-hidden mb-4 ">
+          <Map1 />
+        </div>
+        <h1 className="header1 mb-4">Point markers on Maps</h1>
+        {/* <Map2  /> */}
+        <div className="m-auto overflow-hidden mb-4 ">
+          <Map2/>
         </div>
         <div className="controls">
           {/* Add buttons or inputs for adding, editing, deleting markers */}
