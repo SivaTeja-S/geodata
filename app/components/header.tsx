@@ -1,34 +1,28 @@
+// components/Header.tsx
 "use client";
 import Link from 'next/link';
-import { useAuth } from '../contexts/auth';
+// import { useState } from 'react';
 
-function Header() {
-    // const { user, logout } = useAuth();
+const Header = () => {
+    // const [isLoggedIn, setIsLoggedIn] = useState(!!username); // Check if user is logged in
 
+    const handleLogout = () => {
+      // Perform logout actions here, such as clearing session, state, or token
+    //   setIsLoggedIn(false); // Example: Reset isLoggedIn state
+      // Optionally, perform additional logout logic like clearing cookies, local storage, etc.
+    };
   return (
     <header className="bg-gray-800 p-4 fixed w-full top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center">
-        <Link href="/">
-        Home
-        </Link>
-        {/* {user ? ( */}
-          {/* <div className="flex items-center space-x-4">
-            <span className="text-white">Welcome, {user.username}!</span>
-            <button
-              onClick={logout}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-            >
-              Logout
-            </button>
-          </div>
-        ) : ( */}
-          <Link href="/login">
-            Login
-          </Link>
-        {/* )} */}
+        <Link href="/">Home</Link>
+        <div>
+         
+            <Link href="/login">Login</Link>
+        
+        </div>
       </nav>
     </header>
   );
-}
+};
 
 export default Header;

@@ -11,7 +11,6 @@ export default function Home() {
        <Userdata></Userdata>
        <Drawingshapes></Drawingshapes>
        <Pointers></Pointers>
-       {/* <h1>mas mwdn page</h1>   */}
     </main>
   )
 }
